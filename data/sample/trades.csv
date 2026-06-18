@@ -1,0 +1,6 @@
+trade_id,desk,asset_class,quantity,price,side,trade_date
+T001,Macro Rates,IR Swap,120,101.20,BUY,2026-05-01
+T002,EM Credit,Corporate Bond,80,98.70,SELL,2026-05-01
+T003,Equities,ETF,240,45.10,BUY,2026-05-02
+T004,Commodities,Futures,60,73.45,SELL,2026-05-02
+T005,FX,Spot,150000,1.09,BUY,2026-05-03

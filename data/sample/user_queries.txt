@@ -1,0 +1,4 @@
+Summarize yesterday trade anomalies by desk.
+Which controls are most at risk this week?
+Generate a draft daily regulatory bulletin.
+Explain why the liquidity alert fired for EM Credit.

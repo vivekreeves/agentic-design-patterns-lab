@@ -1,0 +1,5 @@
+Regulatory notes (mock):
+1) Daily market risk summary must include desk-level exposure deltas.
+2) Late trade amendments require explicit audit comments.
+3) Liquidity exceptions above threshold require manager sign-off.
+4) Monthly control report must include unresolved incident counts.
