@@ -54,6 +54,13 @@ jupyter notebook
 - `src/`: reusable Python modules for local experiments
 - `notebooks/`: level-based lessons with paired `.ipynb` and `.txt` files
 
+## Diagram Files
+- Each notebook has a companion architecture markdown file in the same folder.
+- Naming convention: `<notebook_name>_architecture.md`
+- Example: `01_prompt_chaining.ipynb` -> `01_prompt_chaining_architecture.md`
+- Purpose: GitHub renders Mermaid more reliably in `.md` files than in `.ipynb` previews.
+- In each notebook, the Architecture Diagram section links to its local companion markdown file.
+
 ## Local-Only Design
 - Uses mock LLM behavior for deterministic local execution
 - No mandatory API keys
