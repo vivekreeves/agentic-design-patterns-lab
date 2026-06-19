@@ -4,9 +4,21 @@ This diagram is extracted from the notebook so GitHub can render Mermaid reliabl
 
 ```mermaid
 flowchart LR
-  Q[User Task] --> A[Agent Controller]
-  A --> P[Pattern: Model Routing and Cost Optimization]
-  P --> T[Tools / Data]
-  P --> M[Memory / State]
-  P --> O[Output + Metrics]
+  subgraph CoreFlow[Core Pattern Flow]
+    T[Task] --> CX[Complexity Classifier]
+    CX -->|Simple| SM[Small Model]
+    CX -->|Complex| LM[Large Model]
+    SM --> CM[Cost Monitor]
+    LM --> CM
+    CM --> RT[Routing Policy Tuner]
+    RT --> O[Balanced Quality-Cost Output]
+  end
+  O --> QG{Quality Gate}
+  QG -->|Pass| PUB[Publish]
+  QG -->|Review| HREV[Human Review]
+  HREV --> PUB
+  PUB --> OBS[Obs + Cost Metrics]
+  OBS --> LOOP[Improvement Loop]
+  LOOP --> CDB[(Cost-Latency Dash)]
+  CDB --> ACT[FinOps Queue]
 ```

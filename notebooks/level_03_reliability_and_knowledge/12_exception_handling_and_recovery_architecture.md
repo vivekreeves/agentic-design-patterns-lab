@@ -4,9 +4,21 @@ This diagram is extracted from the notebook so GitHub can render Mermaid reliabl
 
 ```mermaid
 flowchart LR
-  Q[User Task] --> A[Agent Controller]
-  A --> P[Pattern: Exception Handling and Recovery]
-  P --> T[Tools / Data]
-  P --> M[Memory / State]
-  P --> O[Output + Metrics]
+  subgraph CoreFlow[Core Pattern Flow]
+    X[Workflow Execution] --> TRY[Try Step]
+    TRY -->|Success| O[Normal Output]
+    TRY -->|Failure| ERR[Error Classifier]
+    ERR --> RET[Retry Policy]
+    ERR --> FB[Fallback Path]
+    ERR --> ESC[Human Escalation]
+    RET --> TRY
+  end
+  ESC --> QG{Quality Gate}
+  QG -->|Pass| PUB[Publish]
+  QG -->|Review| HREV[Human Review]
+  HREV --> PUB
+  PUB --> OBS[Obs + Cost Metrics]
+  OBS --> LOOP[Improvement Loop]
+  LOOP --> SAFE[Safety Check]
+  SAFE --> ESC[Escalation]
 ```

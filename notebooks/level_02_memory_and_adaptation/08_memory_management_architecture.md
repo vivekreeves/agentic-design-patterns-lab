@@ -4,9 +4,20 @@ This diagram is extracted from the notebook so GitHub can render Mermaid reliabl
 
 ```mermaid
 flowchart LR
-  Q[User Task] --> A[Agent Controller]
-  A --> P[Pattern: Memory Management]
-  P --> T[Tools / Data]
-  P --> M[Memory / State]
-  P --> O[Output + Metrics]
+  subgraph CoreFlow[Core Pattern Flow]
+    U[User Turn] --> STM[Short-Term Memory Buffer]
+    STM --> MM[Memory Manager]
+    MM --> LTM[(Long-Term Memory Store)]
+    MM --> RET[Context Retrieval]
+    RET --> AG[Agent Response Engine]
+    AG --> O[Context-Aware Output]
+  end
+  O --> QG{Quality Gate}
+  QG -->|Pass| PUB[Publish]
+  QG -->|Review| HREV[Human Review]
+  HREV --> PUB
+  PUB --> OBS[Obs + Cost Metrics]
+  OBS --> LOOP[Improvement Loop]
+  LOOP --> MEM[(Memory Store)]
+  MEM --> ADAPT[Adapt Trigger]
 ```

@@ -4,9 +4,20 @@ This diagram is extracted from the notebook so GitHub can render Mermaid reliabl
 
 ```mermaid
 flowchart LR
-  Q[User Task] --> A[Agent Controller]
-  A --> P[Pattern: Knowledge Retrieval (RAG)]
-  P --> T[Tools / Data]
-  P --> M[Memory / State]
-  P --> O[Output + Metrics]
+  subgraph CoreFlow[Core Pattern Flow]
+    Q[User Query] --> RET[Retriever]
+    RET --> VS[(Knowledge Index)]
+    VS --> CTX[Context Builder]
+    CTX --> GEN[Answer Generator]
+    GEN --> CIT[Citation Check]
+    CIT --> O[Grounded Response]
+  end
+  O --> QG{Quality Gate}
+  QG -->|Pass| PUB[Publish]
+  QG -->|Review| HREV[Human Review]
+  HREV --> PUB
+  PUB --> OBS[Obs + Cost Metrics]
+  OBS --> LOOP[Improvement Loop]
+  LOOP --> SAFE[Safety Check]
+  SAFE --> ESC[Escalation]
 ```

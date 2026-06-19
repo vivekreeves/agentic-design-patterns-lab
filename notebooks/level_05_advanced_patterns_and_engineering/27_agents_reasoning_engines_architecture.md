@@ -4,9 +4,20 @@ This diagram is extracted from the notebook so GitHub can render Mermaid reliabl
 
 ```mermaid
 flowchart LR
-  Q[User Task] --> A[Agent Controller]
-  A --> P[Pattern: Agents and Reasoning Engines]
-  P --> T[Tools / Data]
-  P --> M[Memory / State]
-  P --> O[Output + Metrics]
+  subgraph CoreFlow[Core Pattern Flow]
+    Q[Problem Statement] --> CTRL[Agent Ctrl]
+    CTRL --> ENG[Reasoning Engine]
+    ENG --> TC[Tool Calls]
+    TC --> FB[Evidence Feedback]
+    FB --> ENG
+    ENG --> O[Reasoned Answer]
+  end
+  O --> QG{Quality Gate}
+  QG -->|Pass| PUB[Publish]
+  QG -->|Review| HREV[Human Review]
+  HREV --> PUB
+  PUB --> OBS[Obs + Cost Metrics]
+  OBS --> LOOP[Improvement Loop]
+  LOOP --> EXP[Experiment Tracker]
+  EXP --> VER[Versioned Prompt]
 ```
