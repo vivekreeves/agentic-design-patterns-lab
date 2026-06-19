@@ -26,6 +26,16 @@ The project is educational, practical, and production-minded. All examples are d
 5. Level 05: Advanced patterns and engineering
 6. Level 06: Agent operations and FinOps
 
+## Roadmap
+
+![Roadmap](https://raw.githubusercontent.com/vivekreeves/agentic-design-patterns-lab/main/images/roadmap.png)
+
+---
+
+## Repository Architecture
+
+![Architecture](https://raw.githubusercontent.com/vivekreeves/agentic-design-patterns-lab/main/images/architecture.png)
+
 See `docs/learning-roadmap.md` for details.
 
 ## Quick Start
